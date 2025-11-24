@@ -11,6 +11,15 @@ resource "aws_security_group" "shared_sg" {
     cidr_blocks = [var.ssh_allowed_cidr]
   }
 
+  # EC2 Instance Connect (browser SSH)
+  ingress {
+    description     = "Allow EC2 Instance Connect"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    prefix_list_ids = var.prefix_list_ids
+  }
+
   ingress {
     description = "Allow HTTP"
     from_port   = 80

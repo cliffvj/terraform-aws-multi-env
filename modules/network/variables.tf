@@ -15,6 +15,12 @@ variable ssh_allowed_cidr {
   default     = "" 
 }
 
+variable "prefix_list_ids" {
+  description = "List of prefix list IDs for EC2 Instance Connect"
+  type        = list(string)
+  default     = ["pl-0e4bcff02b13bef1e"] # Example for us-east-1
+}
+
 variable "environment" {
   description = "Deployment environment"
   type        = string
